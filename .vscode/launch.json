@@ -1,0 +1,73 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "R4 SQL Server (Development)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildR4",
+            "program": "${workspaceFolder}/src/Microsoft.Health.Fhir.R4.Web/bin/Debug/net9.0/Microsoft.Health.Fhir.R4.Web.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Microsoft.Health.Fhir.R4.Web",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+                // All other settings will come from appsettings.Development.json
+                // You can override specific values here if needed:
+                // "SqlServer__ConnectionString": "Server=(local);Initial Catalog=FHIR_R4_TEST;Integrated Security=true"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "R4 SQL Server (Local with Prod-like Settings)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildR4",
+            "program": "${workspaceFolder}/src/Microsoft.Health.Fhir.R4.Web/bin/Debug/net9.0/Microsoft.Health.Fhir.R4.Web.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Microsoft.Health.Fhir.R4.Web",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Production",
+                // Override sensitive settings for local testing
+                "SqlServer__ConnectionString": "Server=(local);Initial Catalog=FHIR_R4;Integrated Security=true",
+                "FhirServer__InternalApiKey": "LOCAL_TEST_KEY",
+                "FhirServer__Security__Authentication__Authority": "http://localhost:5289",
+                "FhirServer__Security__Authentication__Audience": "fhir-api",
+                "FhirServer__Cors__Origins__0": "http://localhost:4200",
+                "FhirServer__Cors__Origins__1": "http://localhost:5289"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "R4 Cosmos DB (Development)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildR4",
+            "program": "${workspaceFolder}/src/Microsoft.Health.Fhir.R4.Web/bin/Debug/net9.0/Microsoft.Health.Fhir.R4.Web.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/Microsoft.Health.Fhir.R4.Web",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "DataStore": "CosmosDb",
+                "FhirServer__Security__Enabled": "false",
+                "CosmosDb__Host": "https://localhost:8081/",
+                "CosmosDb__Key": "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw=="
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        }
+    ]
+}

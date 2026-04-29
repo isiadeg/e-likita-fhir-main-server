@@ -1,0 +1,49 @@
+{
+  "profiles": {
+    "Default": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "SqlServer:Initialize": "true",
+        "SqlServer:AllowDatabaseCreation": "true",
+        "SqlServer:SchemaOptions:AutomaticUpdatesEnabled": "true",
+        "SqlServer:SchemaOptions:EnableOnlineIndexOperations": "false",
+        "TestAuthEnvironment:FilePath": "..//..//testauthenvironment.json",
+        "DataStore": "SqlServer",
+        "TaskHosting:Enabled": "false",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true"
+      },
+      "applicationUrl": "https://localhost:5001/"
+    },
+    "CosmosDb": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "TestAuthEnvironment:FilePath": "..//..//testauthenvironment.json",
+        "DataStore": "CosmosDb",
+        "FhirServer:Operations:Export:StorageAccountConnection": "UseDevelopmentStorage=true",
+        "ASPNETCORE_ENVIRONMENT": "development"
+      },
+      "applicationUrl": "https://localhost:5002/"
+    },
+  "SqlServer": {
+  "commandName": "Project",
+  "environmentVariables": {
+    "SqlServer:Initialize": "true",
+    "SqlServer:AllowDatabaseCreation": "true",
+    "SqlServer:SchemaOptions:AutomaticUpdatesEnabled": "true",
+    "SqlServer:SchemaOptions:EnableOnlineIndexOperations": "false",
+    "TestAuthEnvironment:FilePath": "..//..//testauthenvironment.json",
+    "DataStore": "SqlServer",
+    "TaskHosting:Enabled": "true",
+    "TaskHosting:MaxRunningTaskCount": "2",
+    "FhirServer:Operations:Export:StorageAccountConnection": "UseDevelopmentStorage=true",
+    "FhirServer:Operations:IntegrationDataStore:StorageAccountConnection": "UseDevelopmentStorage=true",
+    "FhirServer:Operations:Import:Enabled": "true",
+    "ASPNETCORE_ENVIRONMENT": "Development"
+  },
+  "applicationUrl": "https://localhost:5001/"
+}
+
+
+  }
+}

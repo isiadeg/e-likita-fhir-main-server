@@ -1,0 +1,43 @@
+name: Docker CI/CD to App Service
+#whatever
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Azure Login (Service Principal)
+      uses: azure/login@v1
+      with:
+        # Use a secret containing the JSON for a Service Principal with Contributor role
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Docker Login to ACR
+      uses: azure/docker-login@v1
+      with:
+        login-server: acrFirst.azurecr.io
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+
+    - name: Build and Push Docker image
+      run: |
+        IMAGE_TAG=$(echo ${{ github.sha }} | cut -c1-7)
+        IMAGE_NAME=acrFirst.azurecr.io/fhirserver:${IMAGE_TAG}
+        docker build -f build/docker/Dockerfile --build-arg FHIR_VERSION=R4 --build-arg ASSEMBLY_VER=1.0.0 -t $IMAGE_NAME .
+        docker push $IMAGE_NAME
+        echo "IMAGE_TAG=${IMAGE_TAG}" >> $GITHUB_ENV
+
+    - name: Update Azure App Service Image
+      run: |
+        az webapp config container set \
+          --name elikita2026-fhir-server \
+          --resource-group e-likitanonprod \
+          --docker-custom-image-name acrFirst.azurecr.io/fhirserver:${{ env.IMAGE_TAG }} \
+          --docker-registry-server-url https://acrFirst.azurecr.io
