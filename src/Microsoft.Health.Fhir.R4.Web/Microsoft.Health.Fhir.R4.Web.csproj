@@ -15,6 +15,7 @@
     <PackageReference Include="prometheus-net.AspNetCore" />
     <PackageReference Include="prometheus-net.DotNetRuntime" />
     <PackageReference Include="prometheus-net.SystemMetrics" />
+    <PackageReference Include="System.Security.Cryptography.Xml" />
 
     <!-- Referenced to mitigate CVE-2021-26701 -->
     <PackageReference Include="System.Text.Encodings.Web" />

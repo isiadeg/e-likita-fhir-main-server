@@ -26,9 +26,8 @@
     <PackageVersion Include="Duende.IdentityServer" Version="7.4.3" />
     <PackageVersion Include="Duende.IdentityServer.AspNetIdentity" Version="7.4.3" />
     <PackageVersion Include="Mailjet.Api" Version="3.0.0" />
-    <PackageVersion Include="System.Security.Cryptography.Xml" Version="$(DotNetSdkPackageVersion)" />
-    <!--CVE-2023-29331-->
-    <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="$(DotNetSdkPackageVersion)" />
+    <PackageVersion Include="System.Security.Cryptography.Xml" Version="9.0.15" />
+    <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="9.0.15" />
     <!-- CVE-2021-26701 -->
     <PackageVersion Include="System.Text.Encodings.Web" Version="$(DotNetSdkPackageVersion)" />
     <!-- CVE-2020-1045 -->
