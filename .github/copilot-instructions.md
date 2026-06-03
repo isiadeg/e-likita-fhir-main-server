@@ -1,6 +1,6 @@
 # Copilot Instructions for Microsoft FHIR Server
 
-Welcome to the Microsoft FHIR Server! These guidelines help provide relevant, accurate, and context-sensitive suggestions to enhance contributions to this project.
+Welcome to the Microsoft FHIR Server! Ok. These guidelines help provide relevant, accurate, and context-sensitive suggestions to enhance contributions to this project.
 
 ---
 
