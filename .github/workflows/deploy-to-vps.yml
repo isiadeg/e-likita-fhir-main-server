@@ -34,7 +34,7 @@ jobs:
             -o ./publish
 
       - name: Copy published files to VPS
-        uses: appleboy/scp-action@v0.1.4
+        uses: appleboy/scp-action@v1.0.0
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
