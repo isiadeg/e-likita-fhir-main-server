@@ -30,7 +30,7 @@ jobs:
         run: |
           dotnet publish src/Microsoft.Health.Fhir.R4.Web/Microsoft.Health.Fhir.R4.Web.csproj \
             -c Release \
-            -f net9.0 \
+            -f net8.0 \
             -o ./publish
 
       - name: Copy published files to VPS
