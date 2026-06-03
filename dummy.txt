@@ -1,0 +1,23 @@
+[Unit]
+Description=Native .NET FHIR API Testing Service
+After=network.target mssql-server.service # Starts only after network and SQL Server are ready
+
+[Service]
+WorkingDirectory=/var/www/e-likita-fhir-main-server
+ExecStart=/usr/bin/dotnet /var/www/e-likita-fhir-main-server/Microsoft.Health.Fhir.R4.Web.dll
+Restart=always
+# Restart service after 10 seconds if the .NET app crashes
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=dotnet-fhir-api
+User=www-data
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=ASPNETCORE_URLS=http://0.0.0.0:5000
+
+# Strict memory clamping for the native .NET process
+MemoryMax=850M
+MemoryHigh=1000M
+
+[Install]
+WantedBy=multi-user.target
+

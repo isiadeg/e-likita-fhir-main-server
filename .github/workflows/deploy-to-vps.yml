@@ -3,7 +3,7 @@ name: Build and deploy to VPS
 on:
   push:
     branches:
-      - main
+      - interserver
 
 jobs:
   build-and-deploy:
