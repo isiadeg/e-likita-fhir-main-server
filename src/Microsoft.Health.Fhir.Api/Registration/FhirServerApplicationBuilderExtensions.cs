@@ -55,8 +55,8 @@ namespace Microsoft.AspNetCore.Builder
             app.UseCors();
 
             app.UseMiddleware<Microsoft.Health.Fhir.Api.Middleware.ApiKeyAuthenticationMiddleware>();
-            
-            app.UseMiddleware<Microsoft.Health.Fhir.Api.Middleware.DataAccessControlMiddleware>(); // ← ADD THIS LINE
+            app.UseMiddleware<Microsoft.Health.Fhir.Api.Middleware.ValuesetRequestLoggingMiddleware>();
+            app.UseMiddleware<Microsoft.Health.Fhir.Api.Middleware.DataAccessControlMiddleware>();
 
             useDevelopmentIdentityProvider?.Invoke(app);
             useHttpLoggingMiddleware?.Invoke(app);

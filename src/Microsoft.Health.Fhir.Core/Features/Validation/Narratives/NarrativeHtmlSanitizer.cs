@@ -180,7 +180,7 @@ namespace Microsoft.Health.Fhir.Core.Features.Validation.Narratives
                 var dom = parser.ParseDocument(string.Format(HtmlTemplate, html));
 
                 // Report parsing errors
-                if (errors.Any())
+                if (errors.Count > 0)
                 {
                     foreach (var error in errors.Where(x => RaiseErrorTypes.Contains((HtmlParseError)x.Code)))
                     {
@@ -197,8 +197,8 @@ namespace Microsoft.Health.Fhir.Core.Features.Validation.Narratives
                 // the provided html must be contained within a <div> element.
                 // Here we check the Body element has exactly 1 child that is a Div
 
-                if (htmlBodyElement?.Children?.Length != 1
-                    || !(htmlBodyElement.Children?.FirstOrDefault() is IHtmlDivElement containerDiv))
+                var bodyChildren = htmlBodyElement?.Children;
+                if (bodyChildren is null || bodyChildren.Length != 1 || bodyChildren[0] is not IHtmlDivElement containerDiv)
                 {
                     yield return Core.Resources.IllegalHtmlOuterDiv;
                     yield break;
