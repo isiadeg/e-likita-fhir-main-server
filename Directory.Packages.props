@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <HealthcareSharedPackageVersion>10.0.68</HealthcareSharedPackageVersion>
-    <Hl7FhirVersion>5.11.4</Hl7FhirVersion>
+    <Hl7FhirVersion>6.3.0</Hl7FhirVersion>
     <Hl7FhirLegacyVersion>5.11.0</Hl7FhirLegacyVersion>
     <DotNetSdkPackageVersion>9.0.6</DotNetSdkPackageVersion>
     <OpenIddictPackageVersion>6.2.0</OpenIddictPackageVersion>
